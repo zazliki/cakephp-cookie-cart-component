@@ -134,12 +134,14 @@ class CartComponent extends Component
         $cart = $this->get();
         
         if ($key = $this->getVariationKey($variations)) {
-            if (empty($cart[$id][$key]))
+            if (!isset($cart[$id][$key])) {
                 $cart[$id][$key] = 0;
+            }
             $cart[$id][$key] += 1;
         } else {
-            if (empty($cart[$id]))
+            if (!isset($cart[$id])) {
                 $cart[$id] = 0;
+            }
             $cart[$id] += 1;
         }
         
